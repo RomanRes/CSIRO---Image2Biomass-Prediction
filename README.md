@@ -71,13 +71,20 @@ The remaining targets are computed deterministically during post-processing.
 - Effective batch size: 16
 - Optimizer: AdamW
 - Mixed precision training enabled
-- Stratified Group K-Fold cross-validation
+
+### Cross-Validation Strategy
+The dataset was split using Stratified Group K-Fold cross-validation to ensure robust evaluation.
+Because of computational constraints, only one fold was trained in this experiment.
+The training setup supports full K-fold training and was designed with scalability in mind.
 
 ### Image Preprocessing
 - Resizing images to 512 x 512
 - Normalization
 - Standard image augmentations using torchvision
 
+### Inference
+Inference uses test-time augmentation with four rotational transforms.
+The final prediction is obtained by averaging model outputs across all augmentations.
 ---
 
 ## Results
